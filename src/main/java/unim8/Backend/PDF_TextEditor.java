@@ -19,6 +19,8 @@ public class PDF_TextEditor {
 	PDDocument doc;
 	PDFTextStripper stripper = new PDFTextStripper();
 	PDPage default_Page = doc.getPage(0);
+	PDPage currentPage = default_Page;
+	
 	
 	public String extractText() {
 		String docText = "If this text shows, something went wrong! :(";
@@ -34,6 +36,14 @@ public class PDF_TextEditor {
 		return docText;
 	}
 	
+	public void addText(String text) {
+		try {
+			PDPageContentStream contentStream = new PDPageContentStream(doc, currentPage);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 	
 	
@@ -75,13 +85,13 @@ public class PDF_TextEditor {
 		this.doc = doc;
 	}
 	public PDPage getPage() {
-		return default_Page;
+		return currentPage;
 	}
 	public PDPage getPage(int index) {
 		return doc.getPage(index);
 	}
 	public void setPage(PDPage page) {
-		this.default_Page = page;
+		this.currentPage = page;
 	}
 	
 	
