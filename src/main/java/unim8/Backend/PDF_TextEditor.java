@@ -12,6 +12,11 @@ import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.apache.pdfbox.Loader;
 import org.apache.pdfbox.text.PDFTextStripper;
 import org.apache.pdfbox.io.MemoryUsageSetting;
+
 public class PDF_TextEditor {
+	public PDF_TextEditor(PDDocument doc) {
+		
+	}
+	
 	
 }
