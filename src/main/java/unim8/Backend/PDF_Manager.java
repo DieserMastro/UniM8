@@ -1,4 +1,4 @@
-package unim8;
+package unim8.Backend;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,9 +16,9 @@ import org.apache.pdfbox.io.MemoryUsageSetting;
 public class PDF_Manager {
 
 	public static void main(String[] args) throws IOException {
-		/*MemoryUsageSetting memUsage = MemoryUsageSetting.setupMainMemoryOnly();
-		memUsage.setUseMainMemoryOnly(true);
-        memUsage.setAllSecurityToBeRemoved(true);*/
+		
+		
+		
 		//So far, this creates an empty pdf in the predetermined path
 		File oldFile = new File("C:\\Users\\sinan\\Desktop\\temp\\TestFolder\\currentLP.pdf");
 		PDDocument document = Loader.loadPDF(oldFile, "");
