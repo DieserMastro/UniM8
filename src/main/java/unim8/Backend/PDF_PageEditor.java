@@ -4,6 +4,8 @@ package unim8.Backend;
 import java.io.Console;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.pdfbox.cos.COSDictionary;
 import org.apache.pdfbox.cos.COSDocument;
@@ -46,9 +48,43 @@ public class PDF_PageEditor {
 		
 		
 	}
-	public PDDocument[] splitPDF(PDDocument doc) {
+	//this now merges back the List of split documents.
+	public PDDocument mergeAfterSplit (List<PDDocument> listOfDocs) {
+		PDDocument result = new PDDocument();
+		//Must use for each loop to close all docs in List
+		for(PDDocument currentDoc : listOfDocs) {
+			result.addPage(currentDoc.getPage(0));
+			
+			//must do at end of each iteration
+			closePDDoc(currentDoc);
+		}
 		
-		PDDocument[] result = new PDDocument[2];
+		
+		return result;
+	}
+	public List<PDDocument> splitPDF(PDDocument doc) {
+		
+		List<PDDocument> result = new ArrayList<PDDocument>();
+		try {
+			result = pdfSplitter.split(doc);
+		} catch (IOException e) {
+			System.out.println("PDF splitting failed!");
+		}
+		
+		
+		
+		return result;
+	}
+	public List<PDDocument> splitPDFatToIndex(PDDocument doc, int startAt, int endAt) {
+		
+		List<PDDocument> result = new ArrayList<PDDocument>();
+		pdfSplitter.setStartPage(startAt);
+		pdfSplitter.setEndPage(endAt);
+		try {
+			result = pdfSplitter.split(doc);
+		} catch (IOException e) {
+			System.out.println("PDF splitting failed!");
+		}
 		
 		
 		
@@ -63,7 +99,13 @@ public class PDF_PageEditor {
 	}
 	
 	
-	
+	private void closePDDoc(PDDocument doc) {
+		try {
+			doc.close();
+		} catch (IOException e) {
+			System.out.println("Couldnt close Doc");
+		}
+	}
 	
 	
 	public PDPage getPage() {
