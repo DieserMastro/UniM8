@@ -14,7 +14,7 @@ import org.apache.pdfbox.text.PDFTextStripper;
 import org.apache.pdfbox.io.MemoryUsageSetting;
 
 public class PDF_Manager {
-
+	
 	public static void main(String[] args) throws IOException {
 		
 		
