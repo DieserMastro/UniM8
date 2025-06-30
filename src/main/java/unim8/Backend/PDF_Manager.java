@@ -27,6 +27,8 @@ public class PDF_Manager {
 	public static void main(String[] args) throws IOException {
 		
 		
+		File_Manager fileManager = new File_Manager();
+		fileManager.printPath();
 		/*
 		//So far, this creates an empty pdf in the predetermined path
 		File oldFile = new File("C:\\Users\\sinan\\Desktop\\temp\\TestFolder\\currentLP.pdf");
@@ -40,7 +42,7 @@ public class PDF_Manager {
 		/*PDFTextStripper stripper = new PDFTextStripper();
 		String docContent = stripper.getText(document);
 		System.out.println(docContent);*/
-		testViewPDF();
+		//testViewPDF();
 		
 		
 		
