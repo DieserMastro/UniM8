@@ -1,7 +1,11 @@
 package unim8.Backend;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 import org.apache.pdfbox.cos.COSDictionary;
 import org.apache.pdfbox.cos.COSDocument;
@@ -12,13 +16,18 @@ import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.apache.pdfbox.Loader;
 import org.apache.pdfbox.text.PDFTextStripper;
 import org.apache.pdfbox.io.MemoryUsageSetting;
+import org.icepdf.core.exceptions.PDFSecurityException;
+import org.icepdf.core.pobjects.Document;
+import org.icepdf.core.util.GraphicsRenderingHints;
+import org.icepdf.ri.common.SwingController;
+import org.icepdf.ri.common.SwingViewBuilder;
 
 public class PDF_Manager {
 	
 	public static void main(String[] args) throws IOException {
 		
 		
-		
+		/*
 		//So far, this creates an empty pdf in the predetermined path
 		File oldFile = new File("C:\\Users\\sinan\\Desktop\\temp\\TestFolder\\currentLP.pdf");
 		PDDocument document = Loader.loadPDF(oldFile, "");
@@ -31,14 +40,14 @@ public class PDF_Manager {
 		/*PDFTextStripper stripper = new PDFTextStripper();
 		String docContent = stripper.getText(document);
 		System.out.println(docContent);*/
+		testViewPDF();
 		
 		
 		
 		
 		
 		
-		
-		
+		/*
 		try {
 			document.save("C:\\Users\\sinan\\Desktop\\temp\\TestFolder\\Test2.pdf");
 			System.out.println("File saved Successfully");
@@ -51,5 +60,32 @@ public class PDF_Manager {
 		///
 		 
 		document.close();
+		*/
+	}
+	public static void testViewPDF() {
+		Document iceDoc =  new Document();
+		
+		String testFilePath = "C:\\Users\\sinan\\Desktop\\HTW\\Info3\\Unim8_Project\\Tests\\chicken.pdf";
+		File temp = new File(testFilePath);
+		try {
+			iceDoc.setFile(temp.getAbsolutePath());
+		} catch (PDFSecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		SwingController controller = new SwingController();
+        controller.setIsEmbeddedComponent(true);
+        SwingViewBuilder factory = new SwingViewBuilder(controller);
+        JPanel viewerComponentPanel = factory.buildViewerPanel();
+        JFrame frame = new JFrame("ICEpdf Viewer");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.getContentPane().add(viewerComponentPanel);
+        frame.pack();
+        frame.setVisible(true);
+		
+        controller.openDocument(testFilePath);
 	}
 }

@@ -9,6 +9,17 @@
   		<groupId>org.apache.pdfbox</groupId>
   		<artifactId>pdfbox</artifactId>
   		<version>3.0.5</version>
-		</dependency>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/com.github.pcorless.icepdf/icepdf-core -->
+	<dependency>
+    	<groupId>com.github.pcorless.icepdf</groupId>
+    	<artifactId>icepdf-core</artifactId>
+    	<version>7.2.5</version>
+	</dependency>
+	<dependency>
+  		<groupId>com.github.pcorless.icepdf</groupId>
+  		<artifactId>icepdf-viewer</artifactId>
+ 	 	<version>7.2.5</version>
+	</dependency>
   </dependencies>
 </project>
