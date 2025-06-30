@@ -1,7 +1,7 @@
 package unim8.Backend;
 
 import java.awt.image.BufferedImage;
-import java.io.File;
+import java.nio.file.*;
 import java.io.IOException;
 
 import javax.swing.JFrame;
@@ -28,7 +28,13 @@ public class PDF_Manager {
 		
 		
 		File_Manager fileManager = new File_Manager();
-		fileManager.printPath();
+		PDF_Viewer viewer = new PDF_Viewer();
+		//fileManager.printPath();
+		//fileManager.openDesktopDirectory();
+		//fileManager.chooseNewDirectory();
+		Path currentFile = fileManager.chooseFile();
+		viewer.viewPDF(currentFile);
+		
 		/*
 		//So far, this creates an empty pdf in the predetermined path
 		File oldFile = new File("C:\\Users\\sinan\\Desktop\\temp\\TestFolder\\currentLP.pdf");
@@ -64,7 +70,7 @@ public class PDF_Manager {
 		document.close();
 		*/
 	}
-	public static void testViewPDF() {
+	/*public static void testViewPDF() {
 		Document iceDoc =  new Document();
 		
 		String testFilePath = "C:\\Users\\sinan\\Desktop\\HTW\\Info3\\Unim8_Project\\Tests\\chicken.pdf";
@@ -89,5 +95,5 @@ public class PDF_Manager {
         frame.setVisible(true);
 		
         controller.openDocument(testFilePath);
-	}
+	}*/
 }
