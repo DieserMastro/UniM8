@@ -34,11 +34,25 @@ public class UI_MainMenu {
 		
 	}
 	private void initialize() {
-		this.frame = new JFrame("UniM8");
-		this.frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		this.frame.pack();
-		frame.setLayout(new BorderLayout(10, 10));
-		frame.setLocationRelativeTo(null);
+		
+		setupFrame();
+		setupFonts();
+		setupMenuItems();
+		
+		this.frame.setVisible(true);
+		
+	}
+	private void setupFrame() {
+		
+		this.frame = new JFrame("UniM8");		
+		this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//this.frame.pack(); Uncomment after adding everything and comment line below 
+		this.frame.setSize(800, 600);
+		this.frame.setLayout(new BorderLayout(10, 10));
+		this.frame.setLocationRelativeTo(null);
+		
+	}
+	private void setupFonts() {
 		
 		Font font = new Font("sans-serif", Font.PLAIN, 18);
 		UIManager.put("Menu.font", font);
@@ -46,16 +60,21 @@ public class UI_MainMenu {
 		UIManager.put("CheckBoxMenuItem.font", font);
 		UIManager.put("RadioButtonMenuItem.font", font);
 		
+	}
+	private void setupMenuItems() {
+		
 		this.menuBar = new JMenuBar();
 		this.fileMenu = new JMenu("File");
 		this.newMenuItem = new JMenuItem("New");
 		this.saveJMenuItem = new JMenuItem("Save");
 		this.exitJMenuItem = new JMenuItem("Exit");
 		
-		fileMenu.add(newMenuItem);
-		fileMenu.add(saveJMenuItem);
-		fileMenu.add(exitJMenuItem);
+		this.fileMenu.add(this.newMenuItem);
+		this.fileMenu.add(this.saveJMenuItem);
+		this.fileMenu.add(this.exitJMenuItem);
 		
+		this.menuBar.add(this.fileMenu);
+		
+		this.frame.setJMenuBar(this.menuBar);
 	}
-
 }
