@@ -24,14 +24,19 @@ import org.icepdf.ri.common.ComponentKeyBinding;
 import org.icepdf.ri.common.SwingController;
 import org.icepdf.ri.common.SwingViewBuilder;
 
-public class UI_MainMenu implements ActionListener {
+public class UI_MainMenu implements ActionListener{
 	
 	private JFrame frame;
 	private JMenuBar menuBar;
-	private JMenu fileMenu;
-	private JMenuItem newJMenuItem;
+	private JMenu fileMenu;	
+
+	private JMenuItem openMenuItem;
 	private JMenuItem saveJMenuItem;
 	private JMenuItem exitJMenuItem;
+	
+	private JMenu newJMenu;
+	private JMenuItem newFileMenuItem;
+	private JMenuItem newFolderMenu;
 	
 	public UI_MainMenu() {
 		initialize();
@@ -72,23 +77,33 @@ public class UI_MainMenu implements ActionListener {
 		this.fileMenu = new JMenu("File");
 		this.fileMenu.setMnemonic(KeyEvent.VK_F);
 		
-		this.newJMenuItem = new JMenuItem("New");
+		this.newJMenu = new JMenu("New...");
 		ImageIcon defaultFileIcon = new ImageIcon("images/defaultFile_Icon.png");
-		this.newJMenuItem.setIcon(defaultFileIcon);
-		this.newJMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
-		this.newJMenuItem.addActionListener(this);
+		this.newJMenu.setIcon(defaultFileIcon);
+		this.newFileMenuItem = new JMenuItem("File");
+		this.newFolderMenu = new JMenuItem("Folder");
+		
+		newJMenu.add(this.newFileMenuItem);
+		newJMenu.add(this.newFolderMenu);
+		
+		
+		this.openMenuItem = new JMenuItem("Open");
+		ImageIcon defaultOpenIcon = new ImageIcon("images/defaultOpen_Icon.png");
+		this.openMenuItem.setIcon(defaultOpenIcon);
 		
 		this.saveJMenuItem = new JMenuItem("Save");
 		ImageIcon defaultSaveIcon = new ImageIcon("images/defaultSave_Icon.png");
 		this.saveJMenuItem.setIcon(defaultSaveIcon);
 		this.saveJMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK));
 		this.saveJMenuItem.addActionListener(this);
+
 		
 		this.exitJMenuItem = new JMenuItem("Exit");
 		ImageIcon defaultExitIcon = new ImageIcon("images/defaultExit_Icon.png");
 		this.exitJMenuItem.setIcon(defaultExitIcon);
 		
-		this.fileMenu.add(this.newJMenuItem);
+		this.fileMenu.add(this.newJMenu);
+		this.fileMenu.add(this.openMenuItem);
 		this.fileMenu.add(this.saveJMenuItem);
 		this.fileMenu.add(this.exitJMenuItem);
 		
