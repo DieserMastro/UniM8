@@ -26,6 +26,8 @@ import org.icepdf.ri.common.SwingViewBuilder;
 
 public class UI_MainMenu implements ActionListener{
 	
+	
+	public Input_Manager inputManager = new Input_Manager();
 	private JFrame frame;
 	private JMenuBar menuBar;
 	private JMenu fileMenu;	
