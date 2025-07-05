@@ -24,10 +24,15 @@ public class UI_MainMenu {
 	
 	private JFrame frame;
 	private JMenuBar menuBar;
-	private JMenu fileMenu;
-	private JMenuItem newJMenuItem;
+	private JMenu fileMenu;	
+
+	private JMenuItem openMenuItem;
 	private JMenuItem saveJMenuItem;
 	private JMenuItem exitJMenuItem;
+	
+	private JMenu newJMenu;
+	private JMenuItem newFileMenuItem;
+	private JMenuItem newFolderMenu;
 	
 	public UI_MainMenu() {
 		initialize();
@@ -66,9 +71,19 @@ public class UI_MainMenu {
 		this.menuBar = new JMenuBar();
 		//Images are 16px
 		this.fileMenu = new JMenu("File");
-		this.newJMenuItem = new JMenuItem("New");
+		this.newJMenu = new JMenu("New...");
 		ImageIcon defaultFileIcon = new ImageIcon("images/defaultFile_Icon.png");
-		this.newJMenuItem.setIcon(defaultFileIcon);
+		this.newJMenu.setIcon(defaultFileIcon);
+		this.newFileMenuItem = new JMenuItem("File");
+		this.newFolderMenu = new JMenuItem("Folder");
+		
+		newJMenu.add(this.newFileMenuItem);
+		newJMenu.add(this.newFolderMenu);
+		
+		
+		this.openMenuItem = new JMenuItem("Open");
+		ImageIcon defaultOpenIcon = new ImageIcon("images/defaultOpen_Icon.png");
+		this.openMenuItem.setIcon(defaultOpenIcon);
 		
 		this.saveJMenuItem = new JMenuItem("Save");
 		ImageIcon defaultSaveIcon = new ImageIcon("images/defaultSave_Icon.png");
@@ -78,7 +93,8 @@ public class UI_MainMenu {
 		ImageIcon defaultExitIcon = new ImageIcon("images/defaultExit_Icon.png");
 		this.exitJMenuItem.setIcon(defaultExitIcon);
 		
-		this.fileMenu.add(this.newJMenuItem);
+		this.fileMenu.add(this.newJMenu);
+		this.fileMenu.add(this.openMenuItem);
 		this.fileMenu.add(this.saveJMenuItem);
 		this.fileMenu.add(this.exitJMenuItem);
 		
