@@ -83,24 +83,29 @@ public class UI_MainMenu implements ActionListener{
 		ImageIcon defaultFileIcon = new ImageIcon("images/defaultFile_Icon.png");
 		this.newJMenu.setIcon(defaultFileIcon);
 		this.newFileMenuItem = new JMenuItem("File");
+		this.newFileMenuItem.addActionListener(this);
 		this.newFolderMenu = new JMenuItem("Folder");
+		this.newFolderMenu.addActionListener(this);
 		
-		newJMenu.add(this.newFileMenuItem);
-		newJMenu.add(this.newFolderMenu);
+		this.newJMenu.add(this.newFileMenuItem);
+		this.newJMenu.add(this.newFolderMenu);
 		
 		
 		this.openMenuItem = new JMenuItem("Open");
+		this.openMenuItem.addActionListener(this);
 		ImageIcon defaultOpenIcon = new ImageIcon("images/defaultOpen_Icon.png");
 		this.openMenuItem.setIcon(defaultOpenIcon);
 		
 		this.saveJMenuItem = new JMenuItem("Save");
+		this.saveJMenuItem.addActionListener(this);
 		ImageIcon defaultSaveIcon = new ImageIcon("images/defaultSave_Icon.png");
 		this.saveJMenuItem.setIcon(defaultSaveIcon);
 		this.saveJMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK));
-		this.saveJMenuItem.addActionListener(this);
+
 
 		
 		this.exitJMenuItem = new JMenuItem("Exit");
+		this.exitJMenuItem.addActionListener(this);
 		ImageIcon defaultExitIcon = new ImageIcon("images/defaultExit_Icon.png");
 		this.exitJMenuItem.setIcon(defaultExitIcon);
 		
@@ -122,4 +127,7 @@ public class UI_MainMenu implements ActionListener{
 		}
 		
 	}
+	
+	
+	
 }
