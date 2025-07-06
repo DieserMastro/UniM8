@@ -15,23 +15,29 @@ import org.icepdf.ri.common.SwingViewBuilder;
 public class PDF_Viewer {
 	
 	Document iceDoc =  new Document();
-	SwingController controller = new SwingController();
-	Path defaultPath;
+	SwingController controller = new SwingController();	
+	JPanel viewerComponentPanel;
+	JFrame frame;
+	SwingViewBuilder factory;
 	
+	Path defaultPath;
 	public PDF_Viewer() {
 		
+		
+	}
+	public void initialize() {
 		this.defaultPath = Path.of("C:\\Users\\sinan\\Desktop\\HTW\\Info3\\Unim8_Project\\Tests\\chicken.pdf");
 		controller.setIsEmbeddedComponent(true);
-	    SwingViewBuilder factory = new SwingViewBuilder(controller);
-	    JPanel viewerComponentPanel = factory.buildViewerPanel();
-	    JFrame frame = new JFrame("ICEpdf Viewer");
+	    this.factory = new SwingViewBuilder(controller);
+	    this.viewerComponentPanel = factory.buildViewerPanel();
+	    this.frame = new JFrame("ICEpdf Viewer");
 	    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    frame.getContentPane().add(viewerComponentPanel);
 	    frame.pack();
-	    frame.setVisible(true);
+	    
 	}
 	
-   public void viewPDF(Path pdf) throws IOException {
+    public void viewPDF(Path pdf) throws IOException {
 	   String pdfPath = pdf.toFile().getAbsolutePath();
 	   File temp = new File(pdfPath);
 		try {
@@ -56,5 +62,10 @@ public class PDF_Viewer {
    public void setCurrentDocument(Document doc) {
 	   this.iceDoc = doc;
    }
-   
+   public JPanel getJPanel() {
+	   return this.viewerComponentPanel;
+   }
+   public void setFrameVisible() {
+	   frame.setVisible(true);
+   }
 }

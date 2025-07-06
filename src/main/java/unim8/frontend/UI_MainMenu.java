@@ -24,11 +24,16 @@ import javax.swing.tree.DefaultTreeModel;
 import org.icepdf.ri.common.ComponentKeyBinding;
 import org.icepdf.ri.common.SwingController;
 import org.icepdf.ri.common.SwingViewBuilder;
+import unim8.Backend.*;
 
 public class UI_MainMenu implements ActionListener{
 	
+	PDF_Viewer pdfViewer;
+	File_Manager fileManager;
 	
 	public Input_Manager inputManager = new Input_Manager();
+	
+	private JPanel viewerComponentICE;
 	private JFrame frame;
 	private JMenuBar menuBar;
 	private JMenu fileMenu;	
@@ -47,6 +52,10 @@ public class UI_MainMenu implements ActionListener{
 	}
 	private void initialize() {
 		
+		pdfViewer = new PDF_Viewer();
+		pdfViewer.initialize();
+		inputManager.setPDFViewer(pdfViewer);
+		this.viewerComponentICE = pdfViewer.getJPanel();
 		setupFrame();
 		setupFonts();
 		setupMenuItems();
@@ -62,6 +71,9 @@ public class UI_MainMenu implements ActionListener{
 		this.frame.setSize(800, 600);
 		this.frame.setLayout(new BorderLayout(10, 10));
 		this.frame.setLocationRelativeTo(null);
+		this.frame.getContentPane().add(viewerComponentICE);
+		this.frame.revalidate();
+
 		
 	}
 	private void setupFonts() {
@@ -135,7 +147,12 @@ public class UI_MainMenu implements ActionListener{
 		}
 		
 	}
-	
+	public void setViewer(PDF_Viewer viewer) {
+		this.pdfViewer = viewer;
+	}
+	public PDF_Viewer getViewer() {
+		return this.pdfViewer;
+	}
 	
 	
 }
