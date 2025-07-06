@@ -1,4 +1,5 @@
 package unim8.frontend;
+import java.io.IOException;
 import java.util.HashMap;
 
 import unim8.Backend.*;
@@ -16,10 +17,11 @@ import unim8.Backend.*;
  * */
 public class Input_Manager {
 	
-
+	PDF_Viewer viewer;
+	File_Manager fileManager;
 	
 	public Input_Manager() {
-		
+		this.fileManager = new File_Manager();
 	}
 	public void InputListener(String actionCommand) {
 		switch (actionCommand) {
@@ -52,7 +54,13 @@ public class Input_Manager {
 		
 	}
 	private void openFile() {
-		System.out.println("openFile invoked");
+		
+		try {
+			viewer.viewPDF(fileManager.chooseFile());
+		} catch (IOException e) {
+			System.out.println("Couldnt Open File... :(");
+			e.printStackTrace();
+		}
 	}
 	private void newFolder() {
 		System.out.println("newFolder invoked");
@@ -62,7 +70,9 @@ public class Input_Manager {
 		System.out.println("newFile invoked");
 		
 	}
-	
+	public void setPDFViewer(PDF_Viewer pdfViewer) {
+		this.viewer = pdfViewer;
+	}
 	
 	
 }
