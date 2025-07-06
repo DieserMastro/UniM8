@@ -1,6 +1,7 @@
 package unim8.Backend;
 
 import java.nio.file.*;
+import java.awt.Component;
 import java.io.File;
 import java.io.IOException;
 
@@ -31,9 +32,9 @@ public class PDF_Viewer {
 	    this.factory = new SwingViewBuilder(controller);
 	    this.viewerComponentPanel = factory.buildViewerPanel();
 	    this.frame = new JFrame("ICEpdf Viewer");
-	    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    /*frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    frame.getContentPane().add(viewerComponentPanel);
-	    frame.pack();
+	    frame.pack();*/
 	    
 	}
 	
@@ -67,5 +68,18 @@ public class PDF_Viewer {
    }
    public void setFrameVisible() {
 	   frame.setVisible(true);
+   }
+   public void printCommand() {
+	   controller.actionPerformed(null);
+   }
+   
+   public void cleanUp() {
+	   int count = viewerComponentPanel.getComponentCount();
+	   for(int i = 0; i < count; i++ ) {
+		   System.out.println(i + ": " + viewerComponentPanel.getComponent(i).getName());
+	   }
+	   
+	   
+	   
    }
 }

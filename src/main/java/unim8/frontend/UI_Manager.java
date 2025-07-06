@@ -12,7 +12,7 @@ public class UI_Manager extends JFrame{
 	
 		UI_MainMenu mainMenu = new UI_MainMenu();
 		PDF_Viewer pdfViewer = mainMenu.getViewer();
-		
+		pdfViewer.cleanUp();
 	
 	}
 }
