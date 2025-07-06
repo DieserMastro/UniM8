@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTree;
 import javax.swing.KeyStroke;
@@ -83,8 +84,10 @@ public class UI_MainMenu implements ActionListener{
 		ImageIcon defaultFileIcon = new ImageIcon("images/defaultFile_Icon.png");
 		this.newJMenu.setIcon(defaultFileIcon);
 		this.newFileMenuItem = new JMenuItem("File");
+		this.newFileMenuItem.setActionCommand("New File");
 		this.newFileMenuItem.addActionListener(this);
 		this.newFolderMenu = new JMenuItem("Folder");
+		this.newFolderMenu.setActionCommand("New Folder");
 		this.newFolderMenu.addActionListener(this);
 		
 		this.newJMenu.add(this.newFileMenuItem);
@@ -92,11 +95,13 @@ public class UI_MainMenu implements ActionListener{
 		
 		
 		this.openMenuItem = new JMenuItem("Open");
+		this.openMenuItem.setActionCommand("Open File");
 		this.openMenuItem.addActionListener(this);
 		ImageIcon defaultOpenIcon = new ImageIcon("images/defaultOpen_Icon.png");
 		this.openMenuItem.setIcon(defaultOpenIcon);
 		
 		this.saveJMenuItem = new JMenuItem("Save");
+		this.saveJMenuItem.setActionCommand("Save");
 		this.saveJMenuItem.addActionListener(this);
 		ImageIcon defaultSaveIcon = new ImageIcon("images/defaultSave_Icon.png");
 		this.saveJMenuItem.setIcon(defaultSaveIcon);
@@ -105,6 +110,7 @@ public class UI_MainMenu implements ActionListener{
 
 		
 		this.exitJMenuItem = new JMenuItem("Exit");
+		this.exitJMenuItem.setActionCommand("Exit");
 		this.exitJMenuItem.addActionListener(this);
 		ImageIcon defaultExitIcon = new ImageIcon("images/defaultExit_Icon.png");
 		this.exitJMenuItem.setIcon(defaultExitIcon);
@@ -122,8 +128,10 @@ public class UI_MainMenu implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() instanceof JMenuItem) {
 			JMenuItem item = (JMenuItem) e.getSource();
-			String text = item.getText();
-			System.out.println(text);
+			inputManager.InputListener(item.getActionCommand());
+			//JOptionPane.showConfirmDialog(item, item.getText());
+			//String text = item.getText();
+			//System.out.println(text);
 		}
 		
 	}
