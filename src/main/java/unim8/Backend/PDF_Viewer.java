@@ -5,17 +5,21 @@ import java.awt.Component;
 import java.io.File;
 import java.io.IOException;
 
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JToolBar;
 
 import org.icepdf.core.exceptions.PDFSecurityException;
 import org.icepdf.core.pobjects.Document;
 import org.icepdf.ri.common.SwingController;
 import org.icepdf.ri.common.SwingViewBuilder;
+import org.icepdf.ri.common.views.annotations.SpellCheckLoader;
 
 public class PDF_Viewer {
 	
 	Document iceDoc =  new Document();
+	//SpellCheckLoader spellChecker;
 	SwingController controller = new SwingController();	
 	JPanel viewerComponentPanel;
 	JFrame frame;
@@ -27,10 +31,13 @@ public class PDF_Viewer {
 		
 	}
 	public void initialize() {
+		
+		//spellChecker = new SpellCheckLoader();
 		this.defaultPath = Path.of("C:\\Users\\sinan\\Desktop\\HTW\\Info3\\Unim8_Project\\Tests\\chicken.pdf");
 		controller.setIsEmbeddedComponent(true);
 	    this.factory = new SwingViewBuilder(controller);
 	    this.viewerComponentPanel = factory.buildViewerPanel();
+	    //spellChecker.addSpellChecker(viewerComponentPanel);
 	    this.frame = new JFrame("ICEpdf Viewer");
 	    /*frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    frame.getContentPane().add(viewerComponentPanel);
@@ -74,12 +81,13 @@ public class PDF_Viewer {
    }
    
    public void cleanUp() {
-	   int count = viewerComponentPanel.getComponentCount();
-	   for(int i = 0; i < count; i++ ) {
-		   System.out.println(i + ": " + viewerComponentPanel.getComponent(i).getName());
+	   JComponent toolbar = (JComponent) this.viewerComponentPanel.getComponent(2);
+	   for(int i = 0; i < toolbar.getComponentCount(); i++) {
+		   //toolbar.remove(i);
+		   viewerComponentPanel.revalidate();
+		   viewerComponentPanel.repaint();
+		  //System.out.println(i + " : " + toolbar.getComponent(i).getName());
 	   }
-	   
-	   
 	   
    }
 }
