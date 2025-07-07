@@ -2,6 +2,9 @@ package unim8.Backend;
 
 import java.nio.file.*;
 import java.awt.Component;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.LayoutManager;
 import java.io.File;
 import java.io.IOException;
 
@@ -12,9 +15,11 @@ import javax.swing.JToolBar;
 
 import org.icepdf.core.exceptions.PDFSecurityException;
 import org.icepdf.core.pobjects.Document;
+
 import org.icepdf.ri.common.SwingController;
 import org.icepdf.ri.common.SwingViewBuilder;
 import org.icepdf.ri.common.views.annotations.SpellCheckLoader;
+import org.icepdf.ri.util.ViewerPropertiesManager;
 
 public class PDF_Viewer {
 	
@@ -22,7 +27,6 @@ public class PDF_Viewer {
 	//SpellCheckLoader spellChecker;
 	SwingController controller = new SwingController();	
 	JPanel viewerComponentPanel;
-	JFrame frame;
 	SwingViewBuilder factory;
 	
 	Path defaultPath;
@@ -37,11 +41,6 @@ public class PDF_Viewer {
 		controller.setIsEmbeddedComponent(true);
 	    this.factory = new SwingViewBuilder(controller);
 	    this.viewerComponentPanel = factory.buildViewerPanel();
-	    //spellChecker.addSpellChecker(viewerComponentPanel);
-	    this.frame = new JFrame("ICEpdf Viewer");
-	    /*frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    frame.getContentPane().add(viewerComponentPanel);
-	    frame.pack();*/
 	    
 	}
 	
@@ -73,21 +72,43 @@ public class PDF_Viewer {
    public JPanel getJPanel() {
 	   return this.viewerComponentPanel;
    }
-   public void setFrameVisible() {
-	   frame.setVisible(true);
-   }
    public void printCommand() {
 	   controller.actionPerformed(null);
    }
    
    public void cleanUp() {
-	   JComponent toolbar = (JComponent) this.viewerComponentPanel.getComponent(2);
-	   for(int i = 0; i < toolbar.getComponentCount(); i++) {
-		   //toolbar.remove(i);
-		   viewerComponentPanel.revalidate();
-		   viewerComponentPanel.repaint();
-		  //System.out.println(i + " : " + toolbar.getComponent(i).getName());
-	   }
+	   //Dont chance the indexes, deleting by component name is too much of a pain in the ass
+	   JToolBar toolbar = (JToolBar) this.viewerComponentPanel.getComponent(0);
 	   
+	   toolbar.remove(0);
+	   toolbar.remove(0);
+	   toolbar.remove(4);
+	   toolbar.remove(4);
+	   toolbar.remove(4);
+
+	   
+	   toolbar.revalidate();
+	   toolbar.repaint();
+
+   }
+   //Useless for now
+   private void customizeToolBar(JToolBar toolbar) {
+	   
+	   
+	   addToToolBar(toolbar, factory.buildZoomToolBar());
+	   addToToolBar(toolbar, factory.buildFullScreenMenuItem());
+	   addToToolBar(toolbar, factory.buildFitToolBar());
+	   addToToolBar(toolbar, factory.buildRotateToolBar());
+	   addToToolBar(toolbar, factory.buildOutlineComponents());
+
+   }
+   protected void addToToolBar(JToolBar toolbar, JComponent comp) {
+       if (comp != null) {
+           toolbar.add(comp);
+           toolbar.revalidate();
+           toolbar.repaint();
+       }
+       else
+    	   System.out.println("failed to add component");;
    }
 }
