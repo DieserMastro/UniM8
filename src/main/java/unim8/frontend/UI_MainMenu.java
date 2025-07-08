@@ -31,7 +31,7 @@ public class UI_MainMenu implements ActionListener{
 	PDF_Viewer pdfViewer;
 	File_Manager fileManager;
 	
-	public Input_Manager inputManager = new Input_Manager();
+	Input_Manager inputManager;
 	
 	private JPanel viewerComponentICE;
 	private JFrame frame;
@@ -54,6 +54,7 @@ public class UI_MainMenu implements ActionListener{
 		
 		pdfViewer = new PDF_Viewer();
 		pdfViewer.initialize();
+		inputManager = new Input_Manager(this.pdfViewer, this);
 		inputManager.setPDFViewer(pdfViewer);
 		this.viewerComponentICE = pdfViewer.getJPanel();
 		setupFrame();
@@ -153,6 +154,8 @@ public class UI_MainMenu implements ActionListener{
 	public PDF_Viewer getViewer() {
 		return this.pdfViewer;
 	}
-	
+	public JFrame getFrame() {
+		return this.frame;
+	}
 	
 }

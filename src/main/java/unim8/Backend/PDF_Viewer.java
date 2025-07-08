@@ -25,7 +25,7 @@ public class PDF_Viewer {
 	
 	Document iceDoc =  new Document();
 	//SpellCheckLoader spellChecker;
-	SwingController controller = new SwingController();	
+	public SwingController controller = new SwingController();	
 	JPanel viewerComponentPanel;
 	SwingViewBuilder factory;
 	
@@ -63,8 +63,12 @@ public class PDF_Viewer {
 	   }
    }
    
-   public Document getCurrentDocument() {
+   public Document getCurrentDocumentICEdoc() {
 	   return this.iceDoc;
+   }
+   public Path getCurrentDocumentFilePath() {
+	   Path path = Path.of(this.iceDoc.getDocumentOrigin());
+	   return path;
    }
    public void setCurrentDocument(Document doc) {
 	   this.iceDoc = doc;
@@ -77,7 +81,7 @@ public class PDF_Viewer {
    }
    
    public void cleanUp() {
-	   //Dont chance the indexes, deleting by component name is too much of a pain in the ass
+	   //Don't change the indexes, deleting by component name is too much of a pain in the ass. This does what i need.
 	   JToolBar toolbar = (JToolBar) this.viewerComponentPanel.getComponent(0);
 	   
 	   toolbar.remove(0);
@@ -91,7 +95,7 @@ public class PDF_Viewer {
 	   toolbar.repaint();
 
    }
-   //Useless for now
+   //Useless for now, cant find a good way to do it properly using ICEpdf tools.
    private void customizeToolBar(JToolBar toolbar) {
 	   
 	   
@@ -110,5 +114,9 @@ public class PDF_Viewer {
        }
        else
     	   System.out.println("failed to add component");;
+   }
+   
+   public SwingController getController() {
+	   return this.controller;
    }
 }
