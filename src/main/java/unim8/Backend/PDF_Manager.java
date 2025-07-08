@@ -24,16 +24,28 @@ import org.icepdf.ri.common.SwingViewBuilder;
 
 public class PDF_Manager {
 	
+	// Main-class: 
 	public static void main(String[] args) throws IOException {
-		
 		
 		File_Manager fileManager = new File_Manager();
 		PDF_Viewer viewer = new PDF_Viewer();
+		
 		//fileManager.printPath();
 		//fileManager.openDesktopDirectory();
 		//fileManager.chooseNewDirectory();
 		Path currentFile = fileManager.chooseFile();
+		
+		//added:
+		viewer.initialize();
+		
 		viewer.viewPDF(currentFile);
+		
+		//added:
+		 JFrame frame = new JFrame("ICEpdf Viewer");
+		 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		 frame.getContentPane().add(viewer.getJPanel());
+		 frame.setSize(800, 600);
+		 frame.setVisible(true);
 		
 		/*
 		//So far, this creates an empty pdf in the predetermined path

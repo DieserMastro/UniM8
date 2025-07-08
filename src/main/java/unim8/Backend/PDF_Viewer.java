@@ -34,7 +34,7 @@ public class PDF_Viewer {
 		
 		
 	}
-	public void initialize() {
+	/*public void initialize() {
 		
 		//spellChecker = new SpellCheckLoader();
 		this.defaultPath = Path.of("C:\\Users\\sinan\\Desktop\\HTW\\Info3\\Unim8_Project\\Tests\\chicken.pdf");
@@ -42,9 +42,35 @@ public class PDF_Viewer {
 	    this.factory = new SwingViewBuilder(controller);
 	    this.viewerComponentPanel = factory.buildViewerPanel();
 	    
+	}*/
+	//TEST:
+	public void initialize() {
+	    // Log initialization progress
+	    System.out.println("Initializing PDF Viewer...");
+
+	    // Ensure the controller is correctly initialized
+	    controller.setIsEmbeddedComponent(true);
+	    System.out.println("SwingController initialized");
+
+	    // Now create the SwingViewBuilder
+	    this.factory = new SwingViewBuilder(controller);
+	    if (this.factory == null) {
+	        System.out.println("SwingViewBuilder creation failed");
+	    } else {
+	        System.out.println("SwingViewBuilder created successfully");
+	    }
+
+	    // Attempt to create the viewer panel
+	    this.viewerComponentPanel = factory.buildViewerPanel();
+	    if (this.viewerComponentPanel == null) {
+	        System.out.println("viewerComponentPanel is null after creation");
+	    } else {
+	        System.out.println("viewerComponentPanel created successfully");
+	    }
 	}
+
 	
-    public void viewPDF(Path pdf) throws IOException {
+    /* public void viewPDF(Path pdf) throws IOException {
 	   String pdfPath = pdf.toFile().getAbsolutePath();
 	   File temp = new File(pdfPath);
 		try {
@@ -61,7 +87,33 @@ public class PDF_Viewer {
 	   } catch (Exception e) {
 		System.out.println(pdfPath);
 	   }
-   }
+   } */
+	
+	// TEST:
+	public void viewPDF(Path pdf) throws IOException {
+	    String pdfPath = pdf.toFile().getAbsolutePath();
+	    File temp = new File(pdfPath);
+	    try {
+	        iceDoc.setFile(temp.getAbsolutePath());
+	    } catch (PDFSecurityException e) {
+	        e.printStackTrace();
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
+
+	    // Ensure the viewer component panel is not null
+	    if (viewerComponentPanel == null) {
+	        System.out.println("viewerComponentPanel is null. Cannot proceed.");
+	        return; // Exit or handle appropriately
+	    }
+
+	    try {
+	        controller.openDocument(pdfPath);
+	    } catch (Exception e) {
+	        System.out.println("Failed to open document: " + pdfPath);
+	        e.printStackTrace();  // More details in case of failure
+	    }
+	}
    
    public Document getCurrentDocument() {
 	   return this.iceDoc;
