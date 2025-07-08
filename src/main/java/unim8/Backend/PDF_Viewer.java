@@ -25,7 +25,7 @@ public class PDF_Viewer {
 	
 	Document iceDoc =  new Document();
 	//SpellCheckLoader spellChecker;
-	SwingController controller = new SwingController();	
+	public SwingController controller = new SwingController();	
 	JPanel viewerComponentPanel;
 	SwingViewBuilder factory;
 	
@@ -63,8 +63,12 @@ public class PDF_Viewer {
 	   }
    }
    
-   public Document getCurrentDocument() {
+   public Document getCurrentDocumentICEdoc() {
 	   return this.iceDoc;
+   }
+   public Path getCurrentDocumentFilePath() {
+	   Path path = Path.of(this.iceDoc.getDocumentOrigin());
+	   return path;
    }
    public void setCurrentDocument(Document doc) {
 	   this.iceDoc = doc;
@@ -110,5 +114,9 @@ public class PDF_Viewer {
        }
        else
     	   System.out.println("failed to add component");;
+   }
+   
+   public SwingController getController() {
+	   return this.controller;
    }
 }
