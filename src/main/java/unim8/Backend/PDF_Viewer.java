@@ -18,8 +18,12 @@ import org.icepdf.core.pobjects.Document;
 
 import org.icepdf.ri.common.SwingController;
 import org.icepdf.ri.common.SwingViewBuilder;
-import org.icepdf.ri.common.views.annotations.SpellCheckLoader;
+import org.icepdf.ri.common.views.DocumentViewControllerImpl;
+import org.icepdf.ri.common.views.DocumentViewModel;
+import org.icepdf.ri.common.views.annotations.AnnotationComponentFactory;
+import org.icepdf.ri.common.MyAnnotationCallback;
 import org.icepdf.ri.util.ViewerPropertiesManager;
+
 
 public class PDF_Viewer {
 	
@@ -41,6 +45,8 @@ public class PDF_Viewer {
 		controller.setIsEmbeddedComponent(true);
 	    this.factory = new SwingViewBuilder(controller);
 	    this.viewerComponentPanel = factory.buildViewerPanel();
+	    controller.setPageViewMode(DocumentViewControllerImpl.ONE_COLUMN_VIEW, true);
+	    controller.setDocumentToolMode(DocumentViewModel.DISPLAY_TOOL_TEXT_SELECTION);
 	    
 	}
 	
@@ -58,6 +64,7 @@ public class PDF_Viewer {
 		}
 	   try {
 		controller.openDocument(pdfPath);
+		controller.setDocumentToolMode(DocumentViewModel.DISPLAY_TOOL_TEXT_SELECTION);
 	   } catch (Exception e) {
 		System.out.println(pdfPath);
 	   }
