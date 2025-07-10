@@ -47,6 +47,9 @@ public class PDF_Viewer {
 	    this.viewerComponentPanel = factory.buildViewerPanel();
 	    controller.setPageViewMode(DocumentViewControllerImpl.ONE_COLUMN_VIEW, true);
 	    controller.setDocumentToolMode(DocumentViewModel.DISPLAY_TOOL_TEXT_SELECTION);
+	    controller.getDocumentViewController().setAnnotationCallback(
+	            new org.icepdf.ri.common.MyAnnotationCallback(
+	                    controller.getDocumentViewController()));
 	    
 	}
 	
@@ -125,5 +128,8 @@ public class PDF_Viewer {
    
    public SwingController getController() {
 	   return this.controller;
+   }
+   private void setToolModeToDefault() {
+	   this.controller.setDocumentToolMode(DocumentViewModel.DISPLAY_TOOL_TEXT_SELECTION);
    }
 }

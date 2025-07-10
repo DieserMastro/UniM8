@@ -52,6 +52,9 @@ public class Input_Manager {
         case "Exit":
             exitApp();
             break;
+        case "Highlight Selection":
+        	highlightSelection();
+        	break;
         default:
             System.out.println("Unknown action: " + actionCommand);
 		}
@@ -131,5 +134,7 @@ public class Input_Manager {
 		this.viewer = pdfViewer;
 	}
 	
-	
+	private void highlightSelection() {
+		System.out.println("highligh selection invoked.");
+	}
 }

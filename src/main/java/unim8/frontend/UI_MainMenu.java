@@ -37,10 +37,12 @@ public class UI_MainMenu implements ActionListener{
 	private JFrame frame;
 	private JMenuBar menuBar;
 	private JMenu fileMenu;	
-
+	//private JMenu editMenu;
+	
 	private JMenuItem openMenuItem;
 	private JMenuItem saveJMenuItem;
 	private JMenuItem exitJMenuItem;
+	//private JMenuItem highlightSelection;
 	
 	private JMenu newJMenu;
 	private JMenuItem newFileMenuItem;
@@ -92,7 +94,11 @@ public class UI_MainMenu implements ActionListener{
 		//Images are 16px
 		this.fileMenu = new JMenu("File");
 		this.fileMenu.setMnemonic(KeyEvent.VK_F);
+		//this.editMenu = new JMenu("Edit");
+		//this.editMenu.setMnemonic(KeyEvent.VK_E);
 		
+		
+		//All Menu items for the File Menu
 		this.newJMenu = new JMenu("New...");
 		ImageIcon defaultFileIcon = new ImageIcon("images/defaultFile_Icon.png");
 		this.newJMenu.setIcon(defaultFileIcon);
@@ -102,6 +108,7 @@ public class UI_MainMenu implements ActionListener{
 		this.newFolderMenu = new JMenuItem("Folder");
 		this.newFolderMenu.setActionCommand("New Folder");
 		this.newFolderMenu.addActionListener(this);
+		
 		
 		this.newJMenu.add(this.newFileMenuItem);
 		this.newJMenu.add(this.newFolderMenu);
@@ -133,7 +140,16 @@ public class UI_MainMenu implements ActionListener{
 		this.fileMenu.add(this.saveJMenuItem);
 		this.fileMenu.add(this.exitJMenuItem);
 		
+		
+		//All JMenu Items for the Edit Menu
+		/*
+		this.highlightSelection = new JMenuItem("Highlight Selection");
+		this.highlightSelection.addActionListener(this);
+		this.editMenu.add(this.highlightSelection);
+		*/
+		
 		this.menuBar.add(this.fileMenu);
+		//this.menuBar.add(this.editMenu);
 		
 		this.frame.setJMenuBar(this.menuBar);
 	}
