@@ -19,8 +19,9 @@ public class File_Manager {
 	private Path defaultPath;
 	public File_Manager() {
 		
-		//desktop = Desktop.getDesktop();
-		this.defaultPath = Path.of("C:\\Users\\sinan\\Desktop\\HTW\\Info3\\Unim8_Project\\Tests");
+		//this should now direct to the Tests folder from wherever the application is launched from
+		this.defaultPath = Paths.get("").toAbsolutePath().getParent();
+		this.defaultPath = defaultPath.resolve("Tests");
 		directories.add(defaultPath);
 		jFileChooser = new JFileChooser();
 		jFileChooser.setCurrentDirectory(this.defaultPath.toFile());
