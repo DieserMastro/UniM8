@@ -1,8 +1,6 @@
 package unim8.frontend;
 import unim8.Backend.*;
 
-import java.awt.Window;
-
 import javax.swing.*;
 
 public class UI_Manager extends JFrame{

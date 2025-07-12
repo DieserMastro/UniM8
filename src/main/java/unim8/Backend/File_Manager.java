@@ -88,10 +88,6 @@ public class File_Manager {
 		}
 		return file;
 	}
-	public void saveFilePath(Path path) {
-		File file = path.toFile();
-		
-	}
 	/*public void openDesktopDirectory() {
 		File path = this.defaultPath.toFile();
 		try {

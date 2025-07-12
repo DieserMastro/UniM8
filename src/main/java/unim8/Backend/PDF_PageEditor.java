@@ -1,22 +1,13 @@
 package unim8.Backend;
 
 
-import java.io.Console;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.pdfbox.cos.COSDictionary;
-import org.apache.pdfbox.cos.COSDocument;
+import org.apache.pdfbox.multipdf.Splitter;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
-import org.apache.pdfbox.pdmodel.PDPageContentStream;
-import org.apache.pdfbox.pdmodel.font.PDType1Font; 
-import org.apache.pdfbox.Loader;
-import org.apache.pdfbox.text.PDFTextStripper;
-import org.apache.pdfbox.io.MemoryUsageSetting;
-import org.apache.pdfbox.multipdf.Splitter;
 
 
 public class PDF_PageEditor {
@@ -41,13 +32,14 @@ public class PDF_PageEditor {
 	}
 	
 	//Split doc at index into 2, add new page to first half, merge doc back to one
-	public void addPageAfterIndex(PDPage page, int index) {
+	//NOT IMPLEMENTED YET
+	/*public void addPageAfterIndex(PDPage page, int index) {
 		PDDocument tempDoc1;
 		PDDocument tempDoc2;
 		
 		
 		
-	}
+	}*/
 	//this now merges back the List of split documents.
 	public PDDocument mergeAfterSplit (List<PDDocument> listOfDocs) {
 		PDDocument result = new PDDocument();

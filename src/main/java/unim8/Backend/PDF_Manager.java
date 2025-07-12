@@ -1,26 +1,7 @@
 package unim8.Backend;
 
-import java.awt.image.BufferedImage;
-import java.nio.file.*;
 import java.io.IOException;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-
-import org.apache.pdfbox.cos.COSDictionary;
-import org.apache.pdfbox.cos.COSDocument;
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.pdmodel.PDPage;
-import org.apache.pdfbox.pdmodel.PDPageContentStream;
-import org.apache.pdfbox.pdmodel.font.PDType1Font; 
-import org.apache.pdfbox.Loader;
-import org.apache.pdfbox.text.PDFTextStripper;
-import org.apache.pdfbox.io.MemoryUsageSetting;
-import org.icepdf.core.exceptions.PDFSecurityException;
-import org.icepdf.core.pobjects.Document;
-import org.icepdf.core.util.GraphicsRenderingHints;
-import org.icepdf.ri.common.SwingController;
-import org.icepdf.ri.common.SwingViewBuilder;
+import java.nio.file.Path;
 
 public class PDF_Manager {
 	

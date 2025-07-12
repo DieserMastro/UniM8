@@ -1,15 +1,12 @@
 package unim8.frontend;
 import java.io.IOException;
-import java.nio.file.Path;
-import java.util.HashMap;
 
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JPopupMenu;
 
 import org.icepdf.ri.common.SwingController;
 
-import unim8.Backend.*;
+import unim8.Backend.File_Manager;
+import unim8.Backend.PDF_Viewer;
 
 /*
  * Receive User interactions with the UI, sort the input, 
