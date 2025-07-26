@@ -61,7 +61,7 @@ public class UI_MainMenu implements ActionListener{
 		
 		this.frame = new JFrame("UniM8");		
 		this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//this.frame.pack(); Uncomment after adding everything and comment line below 
+		//this.frame.pack(); Should automatically set size dimensions, but it sucks, so nah 
 		this.frame.setSize(800, 600);
 		this.frame.setLayout(new BorderLayout(10, 10));
 		this.frame.setLocationRelativeTo(null);

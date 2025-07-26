@@ -7,6 +7,8 @@ import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.text.PDFTextStripper;
 
+
+//Class currently does nothing useful. 
 public class PDF_TextEditor {
 	
 	PDDocument doc;
