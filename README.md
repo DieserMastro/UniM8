@@ -13,8 +13,9 @@
  
  Download UniM8.jar and run it locally. 
  If a Java exception error occurs, locate the directory in which you placed the .jar file, open your system's command prompt from that directory (or navigate to said directory via command prompt) and execute the following command line: 
-     java -jar UniM8.jar
-
+ ~~~
+ java -jar UniM8.jar
+ ~~~
  3- Compile from source code:
 
  Download the project source code, Open your IDE of choice (It definitely works in eclipse), import the project, run the project's UniM8.java main class.  
