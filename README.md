@@ -3,6 +3,8 @@
 
  How to Run UniM8:
 <h2>Java 20 required! Can be downloaded from here: https://www.oracle.com/java/technologies/javase/jdk20-archive-downloads.html</h2>
+
+ From the "UniM8 Application" folder, download either the .exe or the .jar file.
  
  1- Run the Executable:
 
