@@ -2,7 +2,7 @@
  A pdf viewer/editor for students to make studying easier
 
  How to Run UniM8:
-#### Java 20 required! Can be downloaded from here: https://www.oracle.com/java/technologies/javase/jdk20-archive-downloads.html ####
+<h2>Java 20 required! Can be downloaded from here: https://www.oracle.com/java/technologies/javase/jdk20-archive-downloads.html</h2>
  
  1- Run the Executable:
 
