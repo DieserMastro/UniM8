@@ -9,6 +9,7 @@
 
  2- Run the .jar:
 
+ ##Java 20 required! Can be downloaded from here: https://www.oracle.com/java/technologies/javase/jdk20-archive-downloads.html ##
  Download UniM8.jar, locate the directory in your command prompt, execute the following command line: java -jar UniM8.jar
 
  3- Compile from source code:
